@@ -32,9 +32,21 @@
 
 		function updateText()
 		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+			
 
-			if(character_counter == words[word_counter].length)
+			// checks if the character in the array item is a space
+			// and replaces it with the html space
+			var char = words[word_counter][character_counter++];
+			if(char === " ") {
+				char = "&nbsp;";
+			}
+
+			// adds the character to the end of the html element
+			el.innerHTML += char;
+
+			// checks if the character count is greater than the word character count
+			// if so, resets and moves to next word
+			if(character_counter > words[word_counter].length)
 			{
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
